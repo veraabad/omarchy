@@ -21,7 +21,7 @@ if lspci -nn | grep -q "106b:180[12]"; then
   echo "apple-bce" | sudo tee /etc/modules-load.d/t2.conf >/dev/null
   echo "hci_bcm4377" | sudo tee -a /etc/modules-load.d/t2.conf >/dev/null
 
-  echo "MODULES+=(apple-bce usbhid hid_apple hid_generic xhci_pci xhci_hcd)" | sudo tee /etc/mkinitcpio.conf.d/apple-t2.conf >/dev/null
+  echo "MODULES+=(t2bce_dma t2bce_core t2bce_vhci t2bce_audio usbhid hid_apple hid_generic xhci_pci xhci_hcd)" | sudo tee /etc/mkinitcpio.conf.d/apple-t2.conf >/dev/null
 
   cat <<EOF | sudo tee /etc/modprobe.d/brcmfmac.conf >/dev/null
 # Fix for T2 MacBook WiFi connectivity issues
